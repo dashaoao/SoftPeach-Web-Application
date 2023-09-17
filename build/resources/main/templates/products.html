@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.108.0">
+    <title>SoftPeach | Каталог</title>
+    <link th:replace="~{ base :: favicon}">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+    <script src="https://kit.fontawesome.com/563ce4d2d7.js" crossorigin="anonymous"></script>
+    <link th:href="@{css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{css/style.css}" href="../static/css/style.css">
+    <link rel="stylesheet" th:href="@{css/fonts.css}" href="../static/css/fonts.css">
+    <link rel="stylesheet" th:href="@{css/footer.css}" href="../static/css/footer.css">
+    <style>
+        body{
+            text-shadow: none;
+        }
+
+        .product__item{
+            height: 100%;
+        }
+
+        .category__title{
+            margin: 60px 0 30px 0;
+            text-align: left;
+        }
+
+        .card{
+            width: 100%;
+            height: 100%;
+            --bs-card-spacer-x: 0;
+            --bs-card-spacer-y: 0;
+        }
+
+        .card-body{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 10px;
+            border-color: #000000;
+        }
+
+        .card-body img{
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .card-text{
+            margin-bottom: 5px;
+        }
+
+        .dropdown-item{
+            text-align: center;
+        }
+
+        .arrow_block{
+            margin-top: 10px;
+        }
+
+        .arrow-up{
+            text-decoration: none;
+        }
+
+        .arrow-up i{
+            color: white;
+            font-size: 24px;
+        }
+        .btn{
+            font-family: 'GoogleSans-Regular';
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            background-color: #eed29d;
+            color: #eeeeee;
+            border: 1px #f1dca4;
+        }
+        .btn:hover{
+            background-color: #f5c16f;
+            border-color: #f1dca4;
+            color: #eeeeee;
+        }
+    </style>
+</head>
+
+<body>
+<div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+    <header th:replace="~{base :: copy_header}"></header>
+
+    <main style="background-color: #ffffff;">
+        <section class="text-center">
+            <div>
+                <div>
+                    <img th:src="@{img/menu.jpg}" style="margin-bottom: 1em; margin-top: 1em; width: 100%; height: auto;">
+                    <div style=" display:flex; justify-content: center; align-items: center;"><div style="height: 3px; width: 415px; background-color: #000000; border-radius: 3px;"></div></div>
+                    <div th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}">
+                        <a th:href="@{/admin/add_product}" class="btn btn-outline-warning my-2">Добавить изделие</a>
+<!--                        <div class="dropdown">-->
+<!--                            <button class="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                                Редактировать категории-->
+<!--                            </button>-->
+<!--                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">-->
+<!--                                <li><a th:href="@{/admin/add_category}" class="dropdown-item">Добавить категорию</a></li>-->
+<!--                                <li><a th:href="@{/admin/delete_category}" class="dropdown-item">Удалить категорию</a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="album" style="margin-bottom: 1em;">
+            <div class="container" th:each="category : ${categories}">
+                <div th:if="${!category.getProducts().isEmpty()}">
+                    <h2 class="category__title" th:text="${category.getName()}" style="font-family: 'GoogleSans-Medium'; text-align: center;"></h2>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 justify-content-center">
+                        <div th:each="product : ${category.getProducts()}">
+                            <div class="col product__item">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <div>
+                                            <img th:src="@{/images/{id}(id=${product.getImageId()})}" alt="" src="">
+                                            <h5 th:text="${product.getTitle()}" class="card-title text-dark" style="font-family: 'GoogleSans-Medium'; text-align: center;">
+                                                Вкусный тортик</h5>
+                                            <div th:text="${product.getDescription()}" class="card-text text-dark" style="font-family: 'GoogleSans-Medium'; text-align: center; margin-left: 10px; margin-right: 10px;">
+                                                Коржик, заварной крем, мягкие персики</div>
+                                        </div>
+                                        <div>
+                                            <p th:text="${'Вес: ' + product.getWeight() + ' кг'}" class="card-text text-dark" style="font-family: 'GoogleSans-Medium'; text-align: center;">270 р.</p>
+                                            <form style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;" th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')} " th:action="@{/products/delete/{id}(id=${product.getId()})}" method="post">
+                                                <button class="btn btn-outline-warning my-2" type="submit">Удалить</button>
+                                            </form>
+                                            <form style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;" th:unless="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}" th:action="@{/basket/add/{id}(id=${product.getId()})}" method="post">
+                                                <p th:text="${product.getPrice()+' рублей'}" class="card-text text-dark" style="font-family: 'GoogleSans-Medium'; text-align: center; margin-right: 10px;">270 р.</p>
+                                                <button type="submit" class="btn">В корзину</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer th:replace="~{base :: copy_footer}"></footer>
+    <script th:src="@{js/bootstrap.bundle.min.js}" src="../static/js/bootstrap.bundle.min.js"></script>
+</div>
+</body>
+</html>

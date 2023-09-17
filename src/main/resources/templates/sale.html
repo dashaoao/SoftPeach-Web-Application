@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.108.0">
+    <title>SoftPeach | Акции</title>
+    <link th:replace="~{ base :: favicon}">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+    <script src="https://kit.fontawesome.com/563ce4d2d7.js" crossorigin="anonymous"></script>
+    <link th:href="@{css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{css/style.css}" href="../static/css/style.css">
+    <link rel="stylesheet" th:href="@{css/fonts.css}" href="../static/css/fonts.css">
+    <link rel="stylesheet" th:href="@{css/footer.css}" href="../static/css/footer.css">
+    <style>
+        .sale__set {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            height: 100%;
+            align-items: center;
+            /*flex-direction: row;*/
+        }
+
+        .card-sale{
+            /*width: 100%;*/
+            flex: 1 1 33%;
+        }
+
+        .card-body{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .card-body img{
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .btn{
+            font-family: 'GoogleSans-Regular';
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            background-color: #eeca85;
+            color: #eeeeee;
+            border: 1px #f1dca4;
+        }
+        .btn:hover{
+            background-color: #f8b853;
+            border-color: #f1dca4;
+            color: #eeeeee;
+        }
+    </style>
+</head>
+<body>
+<div class="cover-container d-flex w-100 h-100 mx-auto flex-column" style="font-family: GoogleSans-Regular">
+    <header th:replace="~{base :: copy_header}"></header>
+
+    <main class="text-center" style="background-color: #ffffff; margin-top: 10px;">
+        <h2 style="font-family: GoogleSans-Medium; margin-bottom: 10px;">Акции</h2>
+        <div th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}">
+            <a th:href="@{/admin/add_sale}" class="btn btn-outline-warning my-2">Добавить акцию</a>
+        </div>
+
+
+        <div class="sale__set">
+                <div th:each="sale : ${sales}">
+                    <div class="card-sale">
+                        <div class="card-body">
+                            <img th:src="@{/img/{name}(name=${sale.getName()})}" alt="" src="" style="box-shadow: 3px 3px 3px rgba(17,17,17,0.57)">
+                        </div>
+                        <form style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;" th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')} " th:action="@{/sale/delete/{id}(id=${sale.getId()})}" method="post">
+                            <button class="btn btn-outline-warning my-2" type="submit">Удалить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer th:replace="~{base :: copy_footer}"></footer>
+    <script th:src="@{js/bootstrap.bundle.min.js}" src="../static/js/bootstrap.bundle.min.js"></script>
+</div>
+</body>
+</html>

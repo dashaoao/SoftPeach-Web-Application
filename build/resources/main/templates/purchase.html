@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru" class="h-100" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.108.0">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <title>SoftPeach | Заказ</title>
+  <link th:replace="~{ base :: favicon}">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
+
+  <script src="https://kit.fontawesome.com/89cfa66bc9.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <link th:href="@{css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{css/style.css}" href="../static/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{css/fonts.css}" href="../static/css/fonts.css">
+  <link rel="stylesheet" th:href="@{css/footer.css}" href="../static/css/footer.css">
+  <style>
+    body {
+      text-shadow: none;
+    }
+
+    .form-purchase {
+      width: 100%;
+      max-width: 450px;
+      padding: 15px;
+      margin: auto;
+    }
+
+    .form-purchase form{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .form-purchase form input{
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .form-floating>.form-control{
+            height: auto;
+        }
+
+    .form-purchase label{
+        color: rgba(0, 0, 0, 0.66);
+    }
+
+    .form-purchase .form-floating:focus-within {
+        z-index: 2;
+    }
+
+    .check{
+      display: inline-block;
+    }
+    .check > input{
+      vertical-align: middle;
+      width: 25px;
+      height: 25px;
+      position: relative;
+      left: -12px;
+      top: -12px;
+    }
+  </style>
+</head>
+<body class="d-flex h-100">
+<div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+  <header th:replace="~{base :: copy_header}"></header>
+
+  <main class="px-3 text-center" style="margin-top: 1em;">
+    <h3 class="purchase__title">Заказ десерта</h3>
+    <div class="form-purchase">
+      <form th:method="POST" th:action="@{/purchase}" th:object="${purchaseForm}">
+        <div class="form-floating">
+          <input class="form-control" type="text" th:field="*{name}" id="username" name="username" placeholder="Имя" required>
+          <label for="username">Имя</label>
+        </div>
+        <div class="form-floating">
+          <input class="form-control" type="email" th:field="*{email}" id="email" name="email" placeholder="Почта">
+          <label for="email">Почта</label>
+        </div>
+        <div class="form-floating">
+          <input class="form-control" type="tel" th:field="*{phone}" id="phone" name="phone" placeholder="Телефон" required>
+          <label for="phone">Телефон</label>
+        </div>
+        <div class="form-floating" style="margin-bottom: 5px;">
+          <input class="form-control" type="text" th:field="*{comm}" id="comm" name="comm" placeholder="Комментарий" required>
+          <label for="comm">Комментарий к заказу</label>
+        </div>
+        <div class="check">
+          <input type="checkbox" name="send_newsletter" id="send_newsletter" required/>
+          <label for="send_newsletter" style="color: #ffffff; font-family: 'GoogleSans-Regular'; text-align: left;">Нажимая на кнопку, вы даете согласие <br> на обработку ваших <span style="color: #ddd12e; font-family: 'GoogleSans-Medium';" >персональных данных</span>.</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-light" type="submit" style="text-color: #000000; font-family: 'GoogleSans-Medium';">Оставить заявку</button>
+    </form>
+    </div>
+  </main>
+  <footer th:replace="~{base :: copy_footer}"></footer>
+  <script th:src="@{js/bootstrap.bundle.min.js}" src="../static/js/bootstrap.bundle.min.js"></script>
+</div>
+</body>
+</html>

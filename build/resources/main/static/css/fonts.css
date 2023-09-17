@@ -1,0 +1,17 @@
+@import url('https://fonts.soogleapis.com/css?family=Playfair+Display|Source+Sans+Pro:200,400');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=PT+Sans&display=swap');
+
+@font-face {
+    font-family: "GoogleSans-Bold";
+    src: url('../fonts/GoogleSans-Bold.ttf');
+}
+
+@font-face {
+    font-family: "GoogleSans-Regular";
+    src: url('../fonts/GoogleSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: "GoogleSans-Medium";
+    src: url('../fonts/GoogleSans-Medium.ttf');
+}

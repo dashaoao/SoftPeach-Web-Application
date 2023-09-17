@@ -1,0 +1,206 @@
+/*
+ * Globals
+ */
+
+/* Custom default button */
+.btn-light,
+.btn-light:hover,
+.btn-light:focus {
+    color: #333;
+    text-shadow: none; /* Prevent inheritance from `body` */
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.79);
+}
+
+.btn-light {
+    /*--bs-btn-border-color: #010101;*/
+    /*--bs-border-width: 3px;*/
+    --bs-box-shadow: 5px 0.5rem 1rem rgb(0, 0, 0);
+}
+
+.btn {
+    --bs-btn-box-shadow: inset 3px 3px 3px rgb(0, 0, 0);
+}
+
+/*
+ * Base structure
+ */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.cover-container {
+    max-width: 80em;
+}
+
+
+/*
+ * Header
+ */
+
+header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #ffffff;
+}
+
+.navbar-brand {
+    font-family: 'GoogleSans-Medium';
+    color: rgb(0, 0, 0);
+    margin-left: 1em;
+    font-size: 25px;
+}
+
+.nav-link {
+    font-family: 'GoogleSans-Medium';
+    color: rgb(0, 0, 0);
+    margin-left: 1.5em;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    border-bottom-color: rgba(255, 255, 255, 0.055);
+}
+
+.fa-basket-shopping{
+    font-size: 23px;
+}
+
+.hero {
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    font-family: 'GoogleSans-Medium';
+    align-items:end;
+    text-align: left;
+    width: 100%;
+    height: 95vh;
+}
+
+/*Logout*/
+.form-signout {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    background-image: url(../img/login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border-radius: 20px;
+}
+/*Logout*/
+
+.form-purchase {
+    width: 100%;
+    max-width: 450px;
+    padding: 15px;
+    margin: auto;
+    background-image: url(../img/login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border-radius: 20px;
+}
+
+.order-form {
+    background-image: url(../img/basket.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 3px 3px 3px #847979;
+}
+
+.success__message{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    max-width: 330px;
+    background-image: url(../img/basket.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 3px 3px 3px #847979;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.success__message p > a {
+    box-shadow: 3px 3px 3px #847979;
+}
+
+.success__message__success{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    max-width: 400px;
+    background-image: url(../img/login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 3px 3px 3px #847979;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.success__message__success p > a {
+    box-shadow: 3px 3px 3px #847979;
+}
+
+.ord-card{
+    background-image: url(../img/login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.add_product__block {
+    background-image: url(../img/login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
