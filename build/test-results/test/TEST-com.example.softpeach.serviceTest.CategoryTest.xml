@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.softpeach.serviceTest.CategoryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-09-17T14:43:55" hostname="DESKTOP-5LICUD6" time="0.187">
+<testsuite name="com.example.softpeach.serviceTest.CategoryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-09-17T17:03:25" hostname="DESKTOP-5LICUD6" time="0.21">
   <properties/>
-  <testcase name="testListCategories()" classname="com.example.softpeach.serviceTest.CategoryTest" time="0.177"/>
-  <testcase name="testSaveCategory()" classname="com.example.softpeach.serviceTest.CategoryTest" time="0.005"/>
+  <testcase name="testListCategories()" classname="com.example.softpeach.serviceTest.CategoryTest" time="0.189"/>
+  <testcase name="testSaveCategory()" classname="com.example.softpeach.serviceTest.CategoryTest" time="0.013"/>
   <testcase name="testDeleteCategory()" classname="com.example.softpeach.serviceTest.CategoryTest" time="0.003"/>
-  <system-out><![CDATA[2023-09-17T17:43:55.911+03:00  INFO 14440 --- [    Test worker] c.e.softpeach.services.CategoryService   : Saving new Category(id=null, name=Category 1, products=null)
+  <system-out><![CDATA[2023-09-17T20:03:25.845+03:00  INFO 14072 --- [    Test worker] c.e.softpeach.services.CategoryService   : Saving new Category(id=null, name=Category 1, products=null)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

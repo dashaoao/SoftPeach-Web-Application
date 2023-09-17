@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.softpeach.serviceTest.ProductTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-09-17T14:43:56" hostname="DESKTOP-5LICUD6" time="0.009">
+<testsuite name="com.example.softpeach.serviceTest.ProductTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-09-17T17:03:25" hostname="DESKTOP-5LICUD6" time="0.009">
   <properties/>
-  <testcase name="testSaveProduct()" classname="com.example.softpeach.serviceTest.ProductTest" time="0.002"/>
+  <testcase name="testSaveProduct()" classname="com.example.softpeach.serviceTest.ProductTest" time="0.003"/>
   <testcase name="testGetProductById()" classname="com.example.softpeach.serviceTest.ProductTest" time="0.001"/>
   <testcase name="testListProducts()" classname="com.example.softpeach.serviceTest.ProductTest" time="0.001"/>
   <testcase name="testDeleteProduct()" classname="com.example.softpeach.serviceTest.ProductTest" time="0.001"/>
-  <system-out><![CDATA[2023-09-17T17:43:56.032+03:00  INFO 14440 --- [    Test worker] c.e.softpeach.services.ProductService    : Saving new product 'Test Product'
+  <system-out><![CDATA[2023-09-17T20:03:25.990+03:00  INFO 14072 --- [    Test worker] c.e.softpeach.services.ProductService    : Saving new product 'Test Product'
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

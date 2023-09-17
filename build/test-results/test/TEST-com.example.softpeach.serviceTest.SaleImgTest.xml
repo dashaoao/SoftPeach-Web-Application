@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.softpeach.serviceTest.SaleImgTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-09-17T14:43:56" hostname="DESKTOP-5LICUD6" time="0.008">
+<testsuite name="com.example.softpeach.serviceTest.SaleImgTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-09-17T17:03:26" hostname="DESKTOP-5LICUD6" time="0.008">
   <properties/>
-  <testcase name="testSaveSale()" classname="com.example.softpeach.serviceTest.SaleImgTest" time="0.0"/>
+  <testcase name="testSaveSale()" classname="com.example.softpeach.serviceTest.SaleImgTest" time="0.001"/>
   <testcase name="testGetSaleById()" classname="com.example.softpeach.serviceTest.SaleImgTest" time="0.002"/>
-  <testcase name="testListSales()" classname="com.example.softpeach.serviceTest.SaleImgTest" time="0.001"/>
+  <testcase name="testListSales()" classname="com.example.softpeach.serviceTest.SaleImgTest" time="0.002"/>
   <testcase name="testDeleteSale()" classname="com.example.softpeach.serviceTest.SaleImgTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
