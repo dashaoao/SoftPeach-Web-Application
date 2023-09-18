@@ -1,5 +1,6 @@
 FROM eclipse-temurin:17-jdk-alpine
 VOLUME /tmp
+WORKDIR .
 COPY /build/libs/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
 ENV DATABASE_URL jdbc:postgresql://dpg-ck3koemru70s73eq88s0-a.oregon-postgres.render.com:5432/softpeach
