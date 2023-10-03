@@ -49,4 +49,23 @@ public class ProductController {
         productService.deleteProduct(id);
         return "redirect:/products";
     }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/products/update/{id}")
+    public String updateProduct(@PathVariable Long id, Model model) {
+
+        model.addAttribute("categories", categoryService.listCategories());
+        model.addAttribute("productForm", productService.getProductById(id));
+        return "update";
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PostMapping("/products/update/{id}")
+    public String updateProduct(@PathVariable Long id, @RequestParam("file") MultipartFile file,
+                                @ModelAttribute("productForm") Product productForm)
+            throws IOException {
+        productService.changeProduct(id, productForm, file);
+
+        return "redirect:/products";
+    }
 }

@@ -130,14 +130,19 @@
                                                 Коржик, заварной крем, мягкие персики</div>
                                         </div>
                                         <div>
-                                            <p th:text="${'Вес: ' + product.getWeight() + ' кг'}" class="card-text text-dark" style="font-family: 'GoogleSans-Medium'; text-align: center;">270 р.</p>
-                                            <form style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;" th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')} " th:action="@{/products/delete/{id}(id=${product.getId()})}" method="post">
-                                                <button class="btn btn-outline-warning my-2" type="submit">Удалить</button>
-                                            </form>
-                                            <form style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;" th:unless="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}" th:action="@{/basket/add/{id}(id=${product.getId()})}" method="post">
-                                                <p th:text="${product.getPrice()+' рублей'}" class="card-text text-dark" style="font-family: 'GoogleSans-Medium'; text-align: center; margin-right: 10px;">270 р.</p>
-                                                <button type="submit" class="btn">В корзину</button>
-                                            </form>
+                                            <div th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}" style="display: flex; flex-direction: row; gap: 10px; justify-content: center">
+                                                <form th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}" th:action="@{/products/update/{id}(id=${product.getId()})}" method="get">
+                                                    <button class="btn btn-outline-warning my-2" type="submit">Изменить</button>
+                                                </form>
+                                                <form style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;" th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')} " th:action="@{/products/delete/{id}(id=${product.getId()})}" method="post">
+                                                    <button class="btn btn-outline-warning my-2" type="submit">Удалить</button>
+                                                </form>
+                                                <form style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;" th:unless="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}" th:action="@{/basket/add/{id}(id=${product.getId()})}" method="post">
+                                                    <p th:text="${product.getPrice()+' рублей'}" class="card-text text-dark" style="font-family: 'GoogleSans-Medium'; text-align: center; margin-right: 10px;">270 р.</p>
+                                                    <button type="submit" class="btn">В корзину</button>
+                                                </form>
+                                                <p th:text="${'Вес: ' + product.getWeight() + ' кг'}" class="card-text text-dark" style="font-family: 'GoogleSans-Medium'; text-align: center;">270 р.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
