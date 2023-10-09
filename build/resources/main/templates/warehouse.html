@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.108.0">
+  <title>Monki | Склад</title>
+  <link th:replace="~{ base :: favicon}">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+  <script src="https://kit.fontawesome.com/563ce4d2d7.js" crossorigin="anonymous"></script>
+  <link th:href="@{css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{css/style.css}" href="../static/css/style.css" rel="stylesheet">
+  <style>
+    /*html,*/
+    /*body {*/
+    /*  height: 100%;*/
+    /*}*/
+
+    body{
+      text-shadow: none;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .top {
+      flex-grow: 1;
+    }
+
+    .card-body img{
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .arrow_block{
+      margin-top: 10px;
+    }
+
+    .arrow-up{
+      text-decoration: none;
+    }
+
+    .arrow-up i{
+      color: white;
+      font-size: 24px;
+    }
+
+  </style>
+</head>
+<body class="text-bg-dark">
+
+<div class="cover-container d-flex p-3 mx-auto flex-column wrapper">
+  <div class="top">
+    <header th:replace="~{base :: copy_header}"></header>
+    <main>
+      <section class="py-5 container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light text-center">Склад</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <table class="table table-dark table-hover">
+              <thead>
+              <tr>
+                <th scope="col">Продукт</th>
+                <th scope="col">Количество</th>
+                <th scope="col"></th>
+              </tr>
+              </thead>
+              <tbody class="table-group-divider">
+              <tr th:each="product : ${warehouse}">
+                <td th:text="${product.getProduct().getTitle()}">Bread</td>
+                <td th:text="${product.getCount()}">20</td>
+                <td><a th:href="@{/warehouse/add/{id}(id=${product.getId()})}"><i style="color: white" class="fa-solid fa-plus-minus"></i></a></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="text-muted py-5 mt-auto text-white-50 text-center">
+    <div class="container">
+      <p class="float-end mb-1 arrow_block">
+        <a class="arrow-up" href="#"><i class="fa-solid fa-arrow-up"></i></a>
+      </p>
+      <p class="mb-1">Monki &copy; 2023</p>
+      <p class="mb-0">Все права защищены.</p>
+    </div>
+  </footer>
+  <script th:src="@{js/bootstrap.bundle.min.js}" src="../static/js/bootstrap.bundle.min.js"></script>
+</div>
+</body>
+</html>

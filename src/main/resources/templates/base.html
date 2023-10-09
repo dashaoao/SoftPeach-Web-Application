@@ -40,6 +40,9 @@
               <a th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}" class="nav-link fw-medium" th:href="@{/admin/logout}">выйти</a>
             </li>
             <li class="nav-item">
+              <a th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}" class="nav-link fw-medium" th:href="@{/warehouse}">склад</a>
+            </li>
+            <li class="nav-item">
               <a th:unless="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}" class="nav-link fw-medium" th:href="@{/basket}" id="basket"><i class="fa-solid fa-basket-shopping"></i></a>
             </li>
           </ul>

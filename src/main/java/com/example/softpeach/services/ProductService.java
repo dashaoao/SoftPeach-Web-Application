@@ -2,8 +2,10 @@ package com.example.softpeach.services;
 
 import com.example.softpeach.models.Image;
 import com.example.softpeach.models.Product;
+import com.example.softpeach.models.Warehouse;
 import com.example.softpeach.repositories.ImageRepository;
 import com.example.softpeach.repositories.ProductRepository;
+import com.example.softpeach.repositories.WarehouseRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,7 @@ import java.util.List;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final WarehouseRepository warehouseRepository;
     private final ImageRepository imageRepository;
 
     public List<Product> listProducts() {
@@ -43,6 +46,7 @@ public class ProductService {
             }
             log.info("Saving new product '{}'", product.getTitle());
             productRepository.save(product);
+            warehouseRepository.save(new Warehouse(product, 0));
         }
     }
 

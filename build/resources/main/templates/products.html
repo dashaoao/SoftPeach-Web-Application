@@ -137,12 +137,13 @@
                                                 <form style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;" th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')} " th:action="@{/products/delete/{id}(id=${product.getId()})}" method="post">
                                                     <button class="btn btn-outline-warning my-2" type="submit">Удалить</button>
                                                 </form>
-                                                <form style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;" th:unless="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}" th:action="@{/basket/add/{id}(id=${product.getId()})}" method="post">
-                                                    <p th:text="${product.getPrice()+' рублей'}" class="card-text text-dark" style="font-family: 'GoogleSans-Medium'; text-align: center; margin-right: 10px;">270 р.</p>
-                                                    <button type="submit" class="btn">В корзину</button>
-                                                </form>
                                                 <p th:text="${'Вес: ' + product.getWeight() + ' кг'}" class="card-text text-dark" style="font-family: 'GoogleSans-Medium'; text-align: center;">270 р.</p>
                                             </div>
+                                            <form style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;" th:unless="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}" th:action="@{/basket/add/{id}(id=${product.getId()})}" method="post">
+                                                <p th:text="${product.getPrice()+' рублей'}" class="card-text text-dark" style="font-family: 'GoogleSans-Medium'; text-align: center; margin-right: 10px;">270 р.</p>
+                                                <button type="submit" class="btn btn-sm btn-outline-secondary" th:if="${product.getWarehouse().getCount()>0}">В корзину</button>
+                                                <div style="margin-top: 10px; color: black" th:if="${product.getWarehouse().getCount()==0}"><strong>Нет в наличии</strong></div>>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

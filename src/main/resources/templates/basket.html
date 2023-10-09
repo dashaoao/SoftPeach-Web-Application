@@ -118,14 +118,28 @@
                     <li class="list-group-item d-flex justify-content-between lh-sm"
                         th:each="product : ${basket.getProducts()}">
                         <div class="item_info">
-                            <h6 class="my-0" th:text="${product.getTitle()}"></h6>
-                            <small class="text-muted" th:text="${product.getPrice()}+' рублей'"></small>
-                            <br><img th:src="@{/images/{id}(id=${product.getImageId()})}" alt="" src="" style="width: 120px; height: auto; border-radius: 10px; margin-top: 7px;">
+                            <h6 class="my-0" th:text="${product[0].getTitle()}"></h6>
+                            <small class="text-muted" th:text="${product[0].getPrice()}+' рублей'"></small>
+                            <br><img th:src="@{/images/{id}(id=${product[0].getImageId()})}" alt="" src="" style="width: 120px; height: auto; border-radius: 10px; margin-top: 7px;">
+                            <div style="margin-top:15px; color: #c20404; font-size: 13px;" th:if="${product[2]==false}">Такое количество товара отсутсвует на складе.</div>
                         </div>
-                        <form class="btn-del-item" th:action="@{/basket/delete/{id}(id=${product.getId()})}"
-                              method="post">
-                            <button type="submit"><i class="fa-solid fa-xmark" style="color: #000000;"></i></button>
-                        </form>
+                        <div class="d-flex justify-content-between gap-4 lh-sm align-content-center">
+                            <div class="list-group-item d-flex justify-content-between gap-2 lh-sm">
+                                <form class="btn-del-item" th:action="@{/basket/more/{id}(id=${product[0].getId()})}"
+                                      method="post">
+                                    <button type="submit"><i class="fa-solid fa-plus"></i></button>
+                                </form>
+                                <span th:text="${product[1]}">0</span>
+                                <form class="btn-del-item" th:action="@{/basket/less/{id}(id=${product[0].getId()})}"
+                                      method="post">
+                                    <button type="submit"><i class="fa-solid fa-minus"></i></button>
+                                </form>
+                            </div>
+                            <form class="btn-del-item" th:action="@{/basket/delete/{id}(id=${product[0].getId()})}"
+                                  method="post">
+                                <button type="submit" style="vertical-align: middle; height: 100%"><i class="fa-solid fa-xmark"></i></button>
+                            </form>
+                        </div>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <span >Итого: </span>
@@ -133,6 +147,7 @@
                     </li>
                 </ul>
             </div>
+
             <div class="col-md-8 col-lg-5">
 
                 <form id="order" class="order-form" th:method="POST" th:action="@{/basket/order}">
@@ -166,8 +181,9 @@
                                class="form-check-input" required>
                         <label class="form-check-label" for="cash" style="color: #1a1e21">Оплата наличными при получении</label>
                     </div>
-                    <button class="w-100 btn btn-lg" type="submit" th:if="${!basket.getProducts().isEmpty()}">Оформить заказ</button>
-                    <button class="w-100 btn btn-lg" type="submit" disabled th:if="${basket.getProducts().isEmpty()}">Оформить заказ</button>
+                    <button class="w-100 btn btn-lg btn-light" type="submit" th:if="${!basket.getProducts().isEmpty()&&basket.getSuccess()}">Оформить заказ</button>
+                    <button class="w-100 btn btn-lg btn-light" type="submit" disabled th:if="${basket.getProducts().isEmpty()||!basket.getSuccess()}">Оформить заказ</button>
+                    <span style="color: #c20404" th:if="${!basket.getSuccess()}">Оформить заказ невозможно, некоторых товаров нет в наличии.</span>
                 </form>
             </div>
         </div>
